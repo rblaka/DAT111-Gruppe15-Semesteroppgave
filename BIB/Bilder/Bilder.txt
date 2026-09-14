@@ -1,0 +1,1 @@
+Her legges bilder som brukes på nettsiden. Dette for å ha orden på bilde-elementene.
