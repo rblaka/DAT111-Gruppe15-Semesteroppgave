@@ -29,6 +29,7 @@ a{
     width: 100%;
     padding: 70px 0px;
     max-height: 70px;
+
 }
 
 /*Setter bildet øverst til venstre. Til bruk for logo*/
@@ -185,6 +186,7 @@ a{
     font-weight: 100;
     letter-spacing: 1px;
     text-align: left;
+
 }
 
 /*Overskrift for grid*/
@@ -195,6 +197,13 @@ a{
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: left;
+    animation: fadeIn 0.2s ease-in;
+}
+.Grid p{
+    animation: fadeIn 0.4s ease-in;
+}
+.Grid img{
+    animation: fadeIn 0.3s ease-in;
 }
 
 /*Sentrer bilder og sett maks størrelse og bruk maksimal størrelse på bildet*/
@@ -207,8 +216,6 @@ a{
     object-fit: cover;
     border-radius: 25px;
 }
-
-
 
 /***************************** Her stopper informasjonsinndelings-koden **************************/
 
@@ -235,6 +242,18 @@ a{
     padding: 0px 120px;
     max-width: 120px;
     z-index: -1 !important;/*Hvis ikke denne er med, så vil den muligens legge seg forran hovedmeny*/
+}
+
+/*Laget for å forme reklamebildet etter venstre og høyre banner*/
+.reklame{
+    position: absolute;
+    display:flex;
+    align-content: flex-start;
+    width: 100%;
+    height: 100%;
+    left:0px;
+    object-fit: contain;
+    border-radius: 25px;
 }
 
 /*Nedre bannerklassen. Her legges kontaktinfo osv. Er en fargeboks som legges nederst*/
@@ -268,14 +287,3 @@ h5{
     letter-spacing: 1px;
 }
 
-/*Laget for å forme reklamebildet etter venstre og høyre banner*/
-.reklame{
-    position: absolute;
-    display:flex;
-    align-content: flex-start;
-    width: 100%;
-    height: 100%;
-    left:0px;
-    object-fit: contain;
-    border-radius: 25px;
-}
