@@ -256,3 +256,12 @@ a{
     bottom: 10%;
     right: 10%;
 }
+
+/*Skrift som brukes for å si ifra at man har brukt ki-generert innhold*/
+h5{
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+    font-style: italic;
+    letter-spacing: 1px;
+}
