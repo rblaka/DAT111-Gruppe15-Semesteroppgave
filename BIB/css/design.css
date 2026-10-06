@@ -35,9 +35,10 @@ a{
 /*Setter bildet øverst til venstre. Til bruk for logo*/
 .image{
     position: absolute;
-
     top: 0;
     left: 0;
+    max-height: 141px;
+    max-width: 222px;
 }
 
 /*OverskriftKlassen brukes inni hovedmeny-banner*/
