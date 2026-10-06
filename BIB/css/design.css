@@ -94,7 +94,7 @@ a{
 /*Selve drop-downlisten. Dette er boksen som gjør at musen kan hovre over hele boksen uten at den fader ut.*/
 .Dropdown-list{
     position: absolute;
-    top: 73%; /*Sier noe om hvor langt ned skal dropdownlisten være i forhold til toppen og menybanner*/
+    top: 85%; /*Sier noe om hvor langt ned skal dropdownlisten være i forhold til toppen og menybanner*/
     right: 1%; /*Sier noe om hvor langt til siden dropdownlisten skal være i forhold til høyre ende og menybannerens bredde*/
     display: none;
     opacity: 0;
@@ -123,7 +123,7 @@ a{
 }
 
 /*Funksjonen til dropdownlisten, som sier at dropdown teksten skal vises og fades ut når musen ikke peker på menyvalget*/
-.Dropdown-list:not(:hover){
+.Dropdown-list:not{
     opacity: 0;
     display: none; /*Skjuler boksen slik at det ser ut som at menyen forsvinner*/
 }
