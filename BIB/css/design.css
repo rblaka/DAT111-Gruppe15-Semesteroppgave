@@ -267,3 +267,13 @@ h5{
     font-style: italic;
     letter-spacing: 1px;
 }
+.reklame{
+    position: absolute;
+    display:flex;
+    align-content: flex-start;
+    width: 100%;
+    height: 100%;
+    left:0px;
+    object-fit: contain;
+    border-radius: 25px;
+}
