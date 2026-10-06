@@ -267,6 +267,8 @@ h5{
     font-style: italic;
     letter-spacing: 1px;
 }
+
+/*Laget for å forme reklamebildet etter venstre og høyre banner*/
 .reklame{
     position: absolute;
     display:flex;
