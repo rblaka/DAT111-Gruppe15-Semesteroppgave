@@ -1,22 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap');
 
+
+/*Nullstiller verdier*/
 html, body {
     margin: 0;
     padding: 0;
 }
+
+/*For dem som trenger litt space. Værsågod. Brukes for å skape avstand mellom hovedmenybanner og informasjonsteksten på siden*/
 .Space{
     padding: 40px 0px
 }
-/* Her starter meny-koden*/
+
+/*Setter at linkene skal farges sort uansett, og at det ikke skal være noe undestrek osv av effekter*/
+a{
+    color: black; /*Endre farge på linkene her*/
+    text-decoration: none;
+}
+/****************************** Her starter meny-koden************************/
+
+
+/*Her lages menyKlassen som skaper en boks med enkel farge, som følger siden nedover forankret i topp*/
 .Hovedmeny-Banner {
     position: sticky;
     top: 0;
     left: 0;
-    background-color: #c2bf9b;
+    background-color: #225763; /* Endre farge på hovedbanneret her*/
     width: 100%;
-    padding: 50px 0px;
-    max-height: 50px;
+    padding: 70px 0px;
+    max-height: 70px;
 }
+
+/*Setter bildet øverst til venstre. Til bruk for logo*/
+.image{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/*OverskriftKlassen brukes inni hovedmeny-banner*/
 .Overskrift{
     font-size: 40px;
     font-family: 'Montserrat', sans-serif;
@@ -24,138 +46,129 @@ html, body {
     text-transform: uppercase;
     letter-spacing: 1px;
     position: absolute;
-    top: 0%;
+    top: 30%;
     right: 40%;
-
-}
-.Side-bannerLeft{
-    position: fixed;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    background-color: #d1d3b3;
-
-    padding: 0px 120px;
-    max-width: 120px;
-    z-index: -1 !important;
 }
 
-.Side-bannerRight{
-    position: fixed;
-    height: 100vh;
-    top: 0;
-    right: 0;
-    background-color: #d1d3b3;
-    height: 100%;
-    padding: 0px 120px;
-    max-width: 120px;
-    z-index: -1 !important;
-}
-.Nedre_banner {
-    position: relative;
+/**************Her starter magien med Dropdownlister*************/
 
-    bottom: 0;
-
-    background-color: #c2bf9b;
-    width: 100%;
-    padding: 60px 0px;
+/*Øverste dropdown-plassering. Er kun for å få riktig plassering på menyen- legges øverst i dropdown hierarkiet*/
+.Dropdown-Top{
+    position: absolute;
+    top: -20%;
+    right: 0%;
+    display: flex;
     max-height: 60px;
-
-
+    padding: 12px 0px;
 }
-.Nedre_BannerSkrift{
-    font-size: 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: absolute;
-    bottom: 10%;
-    right: 10%;
-}
-
-.Dropdown{
-    position: absolute;
-    top: 0%;
-    right: 20%;
+/*Font-detaljer for øverste dropdown-meny*/
+.Dropdown-Top-Font{
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
-    display: block;
-    max-width: 50px;
-    max-height: 60px;
-    padding: 12px 0px;
-
 }
 
-.Dropdown-list{
+/*Første ledd i dropdown-menyen. Denne klassen gjør det mulig å lage flere menyer horisontalt etter hverandre */
+.Dropdown{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 15px;
+    min-width: max-content;
+}
+
+/*Font-detaljer for selve dropdown-menyen som fader in/ut*/
+.Dropdown-List-Font{
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+/*Selve drop-downlisten. Dette er boksen som gjør at musen kan hovre over hele boksen uten at den fader ut.*/
+.Dropdown-list{
+    position: absolute;
+    top: 73%; /*Sier noe om hvor langt ned skal dropdownlisten være i forhold til toppen og menybanner*/
+    right: 1%; /*Sier noe om hvor langt til siden dropdownlisten skal være i forhold til høyre ende og menybannerens bredde*/
     display: none;
     opacity: 0;
-    background-color: #dbcdd5;
+    background-color: #41d8bf; /*Endre farge på dropdownlist menyen her*/
     min-width: 160px;
+    min-height: 180px;
     box-shadow: 0px 8px 16px 0px;
-    padding: 12px 16px;
+    padding: 5px 5px;
     border-radius: 10px;
     transition: opacity 0.2s ease, display 0.2s ease;
     transition-behavior: allow-discrete;
-
-}
-a{
-    color: black;
 }
 
+/*Funksjonen til dropdownlisten, som sier at dropdownboksen skal vises og fades in når musen peker på menyvalget*/
 .Dropdown:hover .Dropdown-list{
     opacity: 1;
     display: block;
     animation: fadeIn 0.2s ease-in ;
 }
 
+/*Funksjonen til dropdownlisten, som sier at dropdownteksten skal vises og fades in når musen peker på menyvalget*/
+.Dropdown-list:hover .Dropdown-list{
+    opacity: 1;
+    display: block;
+    animation: fadeIn 0.2s ease-in ;
+}
+
+/*Funksjonen til dropdownlisten, som sier at dropdown teksten skal vises og fades ut når musen ikke peker på menyvalget*/
 .Dropdown-list:not(:hover){
     opacity: 0;
-    display: none;
+    display: none; /*Skjuler boksen slik at det ser ut som at menyen forsvinner*/
 }
 
-.Dropdown-list-element{
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px;
-    padding: 12px 16px;
+/********************************Her stopper dropdownlist-magien****************************/
 
-}
-
+/*Animasjon på font-dybde*/
 .cursor {
-    cursor: default;
     transition: font-weight 0.5s ease;
 }
 
+/*Igangsetter animasjon på font-dybde når mus peker over. Må sees i sammenheng med cursor-klassen*/
 .cursor:hover{
     font-weight: 1000;
+
 }
 
+/*Igangsetter animasjon på font-dybde når mus ikke peker over. Må sees i sammenheng med cursor-klassen*/
 .cursor:not(hover){
     font-weight:500;
 }
 
+/*Animasjon på font-dybde*/
+.cursorMain {
+    transition: color 0.5s ease;
+}
 
+/*Igangsetter animasjon på font-dybde når mus peker over. Må sees i sammenheng med cursor-klassen*/
+.cursorMain:hover{
+    color: #41d8bf; /*Endre farge på menyskrift når musepeker hovrer over skrift*/
+}
+
+/*Igangsetter animasjon på font-dybde når mus ikke peker over. Må sees i sammenheng med cursor-klassen*/
+.cursorMain:not(hover){
+    color: black; /*Endre farge på menyskrift når musepeker hovrer ut av skrift*/
+}
+
+/*Dette er en funksjon som lager en fade-effekt. brukes i Dropdown-list:hover og Dropdown:hover-klassen til å vise elementer når musepekeren er over menyobjekt*/
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-/* Her stopper meny-koden */
+/***************************** Her stopper meny-koden **************************/
 
+/***************************** Her Starter informasjonsinndelings-koden **************************/
 .Grid{
-
     display: grid;
     justify-self: center;
-
-
     grid-template-columns:  auto auto;
     grid-gap: 60px;
     padding: 0px 300px ;
@@ -177,8 +190,58 @@ a{
     letter-spacing: 1px;
     text-align: left;
 }
+
 .align{
     align-content: center;
     max-height: 600px;
     max-width: 300px;
+}
+
+/***************************** Her stopper informasjonsinndelings-koden **************************/
+
+/* Klassen er til bruk for å fargelegge deler av venstre side*/
+.Side-bannerLeft{
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #2f89b3; /*Endre farge på sidebanner venstre her*/
+    padding: 0px 120px;
+    max-width: 120px;
+    z-index: -1 !important;/*Hvis ikke denne er med, så vil den muligens legge seg forran hovedmeny*/
+}
+
+/* Klassen er til bruk for å fargelegge deler av høyre side*/
+.Side-bannerRight{
+    position: fixed;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    background-color: #2f89b3; /*Endre farge på sidebanner høyre her*/
+    height: 100%;
+    padding: 0px 120px;
+    max-width: 120px;
+    z-index: -1 !important;/*Hvis ikke denne er med, så vil den muligens legge seg forran hovedmeny*/
+}
+
+/*Nedre bannerklassen. Her legges kontaktinfo osv. Er en fargeboks som legges nederst*/
+.Nedre_banner {
+    position: relative;
+    bottom: 0;
+    background-color: #3b50b2; /*Endre farge på nedre banner her*/
+    width: 100%;
+    padding: 60px 0px;
+    max-height: 60px;
+}
+
+/* Skriftklassen som sier hvor kontaktinfo skal stå. Legges inni nedre banner*/
+.Nedre_BannerSkrift{
+    font-size: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
 }
