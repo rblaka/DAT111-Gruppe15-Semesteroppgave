@@ -294,3 +294,40 @@ h5{
     letter-spacing: 1px;
 }
 
+/* Andreas - historieside */
+
+.historie-bakgrunn {
+    background-image: url("../Bilder/Andreas/bakgrunn.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.historie-innhold {
+    width: 70%;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.historie-innhold h1,
+.historie-innhold h2 {
+    color: #16243D;
+}
+
+.historie-innhold table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.historie-innhold th,
+.historie-innhold td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
