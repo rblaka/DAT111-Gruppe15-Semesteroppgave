@@ -331,3 +331,123 @@ h5{
     padding: 10px;
     text-align: left;
 }
+
+/* Elif - kontaktside */
+
+.Elif-innhold {
+    width: 70%;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.Elif-innhold h2 {
+    color: #16243D;
+}
+
+.Elif-innhold p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #2B2B2B;
+}
+
+.Elif-innhold ul {
+    padding-left: 25px;
+}
+
+.Elif-innhold li {
+    margin-bottom: 8px;
+}
+
+.Elif-innhold table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.Elif-innhold th,
+.Elif-innhold td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+.Elif-innhold th {
+    background-color: #16243D;
+    color: #FFFFFF;
+}
+
+.Elif-innhold caption {
+    text-align: left;
+    color: #16243D;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.Elif-historie-bakgrunn {
+    background-color: #F2EBE1;
+    min-height: 100vh;
+}
+
+.Elif-historie-innhold {
+    width: 70%;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.Elif-historie-innhold h1,
+.Elif-historie-innhold h2 {
+    color: #16243D;
+}
+
+.Elif-historie-innhold p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #2B2B2B;
+}
+
+.Elif-historie-innhold details {
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #F2EBE1;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.Elif-historie-innhold summary {
+    color: #16243D;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.Elif-historie-innhold table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.Elif-historie-innhold th,
+.Elif-historie-innhold td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: left;
+}
+
+.Elif-historie-innhold th {
+    background-color: #16243D;
+    color: #FFFFFF;
+}
+
+.Elif-tilbake {
+    color: #16243D;
+    font-weight: 800;
+}
+
+.Elif-tilbake:hover {
+    color: #C55A44;
+}
