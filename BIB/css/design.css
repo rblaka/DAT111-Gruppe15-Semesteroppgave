@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap');
 
-
 /*Nullstiller verdier*/
 html, body {
     margin: 0;
@@ -14,7 +13,7 @@ html, body {
 
 /*Setter at linkene skal farges sort uansett, og at det ikke skal være noe undestrek osv av effekter*/
 a{
-    color: black; /*Endre farge på linkene her*/
+    color: #16243D; /*Endre farge på linkene her*/
     text-decoration: none;
 }
 /****************************** Her starter meny-koden************************/
@@ -25,7 +24,7 @@ a{
     position: sticky;
     top: 0;
     left: 0;
-    background-color: #225763; /* Endre farge på hovedbanneret her*/
+    background-color: #F2EBE1; /* Endre farge på hovedbanneret her*/
     width: 100%;
     padding: 70px 0;
     max-height: 70px;
@@ -43,14 +42,15 @@ a{
 
 /*OverskriftKlassen brukes inni hovedmeny-banner*/
 .Overskrift{
-    font-size: 40px;
+    font-size: 50px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
     position: absolute;
-    top: 30%;
-    right: 40%;
+    color: #16243D; /* Endre farge på overskriften her*/
+    top: 0;
+    left: 15.2%;
 }
 
 /**************Her starter magien med Dropdownlister*************/
@@ -61,6 +61,7 @@ a{
     top: -20%;
     right: 0;
     display: flex;
+
     max-height: 60px;
     padding: 12px 0;
 }
@@ -69,6 +70,7 @@ a{
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
+
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -83,10 +85,11 @@ a{
 }
 
 /*Font-detaljer for selve dropdown-menyen som fader in/ut*/
-.Dropdown-List-Font{
+.Dropdown-List-Font a{
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+    color: #FFFFFF;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -98,7 +101,7 @@ a{
     right: 1%; /*Sier noe om hvor langt til siden dropdownlisten skal være i forhold til høyre ende og menybannerens bredde*/
     display: none;
     opacity: 0;
-    background-color: #41d8bf; /*Endre farge på dropdownlist menyen her*/
+    background-color: #16243D; /*Endre farge på dropdownlist menyen her*/
     min-width: 160px;
     min-height: 180px;
     box-shadow: 0 8px 16px 0;
@@ -137,7 +140,7 @@ a{
 
 /*Igangsetter animasjon på font-dybde når mus peker over. Må sees i sammenheng med cursor-klassen*/
 .cursor:hover{
-    font-weight: 1000;
+    font-weight: 800;
 
 }
 
@@ -153,12 +156,12 @@ a{
 
 /*Igangsetter animasjon på font-dybde når mus peker over. Må sees i sammenheng med cursor-klassen*/
 .cursorMain:hover{
-    color: #41d8bf; /*Endre farge på menyskrift når musepeker hovrer over skrift*/
+    color: #C55A44; /*Endre farge på menyskrift når musepeker hovrer over skrift*/
 }
 
 /*Igangsetter animasjon på font-dybde når mus ikke peker over. Må sees i sammenheng med cursor-klassen*/
 .cursorMain:not{
-    color: black; /*Endre farge på menyskrift når musepeker hovrer ut av skrift*/
+    color: #16243D; /*Endre farge på menyskrift når musepeker hovrer ut av skrift*/
 }
 
 /*Dette er en funksjon som lager en fade-effekt. brukes i Dropdown-list:hover og Dropdown:hover-klassen til å vise elementer når musepekeren er over menyobjekt*/
@@ -198,9 +201,11 @@ a{
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: left;
+    color: #16243D;
     animation: fadeIn 0.2s ease-in;
 }
 .Grid p{
+    color: #2B2B2B;
     animation: fadeIn 0.4s ease-in;
 }
 .Grid img{
@@ -226,7 +231,7 @@ a{
     height: 100vh;
     top: 0;
     left: 0;
-    background-color: #2f89b3; /*Endre farge på sidebanner venstre her*/
+    background-color: #F2EBE1; /*Endre farge på sidebanner venstre her*/
     padding: 0 120px;
     max-width: 120px;
     z-index: -1 !important;/*Hvis ikke denne er med, så vil den muligens legge seg forran hovedmeny*/
@@ -238,7 +243,7 @@ a{
 
     top: 0;
     right: 0;
-    background-color: #2f89b3; /*Endre farge på sidebanner høyre her*/
+    background-color: #F2EBE1; /*Endre farge på sidebanner høyre her*/
     height: 100%;
     padding: 0 120px;
     max-width: 120px;
@@ -261,7 +266,7 @@ a{
 .Nedre_banner {
     position: relative;
     bottom: 0;
-    background-color: #3b50b2; /*Endre farge på nedre banner her*/
+    background-color: #16243D; /*Endre farge på nedre banner her*/
     width: 100%;
     padding: 60px 0;
     max-height: 60px;
@@ -272,6 +277,7 @@ a{
     font-size: 10px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
+    color: #FFFFFF;
     text-transform: uppercase;
     letter-spacing: 1px;
     position: absolute;
