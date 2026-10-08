@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="No">
 <head>
+
     <link rel=stylesheet href="../../../css/design.css">
     <!--Henter inn æ, ø og å....-->
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>BIB</title>
+
 </head>
 <body>
 <!--Start på hovedmeny-->
@@ -38,21 +40,47 @@
 
 <!--Start hovedinnhold-->
 <div class="Grid">
-    <div><h2>Historie</h2>
-        <p>Sett inn historie</p>
-        <ul>
-            <li><p>Sett inn poenger</p></li>
-        </ul>
+    <div><h2>La meg fortelle deg en liten historie...<a class="cursorMain" href="#" id="start">Trykk her</a></h2>
+        <p class="historie1">
+            Jeg har alltid likt retro spill...<br>
+            Det minner meg om en enklere tid...<br>
+            Da alt var litt mer spennende...
+        </p>
+        <p class="historie2">
+            Første gangen vi fikk en datamaskin i hjemmet var i 1996.<br>
+            Det var som en magisk boks som duret.<br>
+            bokstaver og farger på en skjerm, alt satt i system...<br>
 
+        </p>
+        <p class="historie3">
+            Siden har jeg aldri gitt opp fasinasjonen for datamaskiner<br>
+            Det å måtte glede seg over de små tingene er viktig.<br>
+            Glede av å få til nye ting...
+        </p>
+        <p class="historie4">
+            Det trenger ikke være perfekt...
+        </p>
+        <p class="historie5">
+            Det må bare være motiverende og gøy...<br>
+
+        </p>
+
+        <ul>
+            <li><p class="poeng">0</p></li>
+        </ul>
     </div>
     <div>
         <img class="alignImage" src="../../../Bilder/IMG_0289.jpeg" alt="Rune Blåka">
     </div>
-</div>
 
+
+</div>
 <!--Slutt hovedinnhold-->
 
 <!--Nedre banner-->
+<div class="Space"><br></div>
+<div class="Space"></div>
+<div class="Space"></div>
 <div class="Space"></div>
 <div class="Nedre_banner">
     <div class="Nedre_BannerSkrift">
@@ -63,5 +91,309 @@
     </div>
 </div>
 <!--Slutt Nedre banner-->
-</body>
+
+<script>
+    //Paddlelogikk-Variabler
+    const boks = document.createElement('div');
+    let paddleX = 0;
+    let paddleY = 0;
+    let staticPositionY = 800;
+
+    let bXVenstre = 240;
+    let bXHoyre = 1570;
+    let paddleBredde = 100;
+    let paddleHoyde = 20;
+
+    //Ball-logikk-Variabler
+    const ball = document.createElement('div2');
+    let ballX = 400;
+    let ballY = 400;
+    let bBallXVenstre = 240;
+    let bBallXHoyre = 1640;
+    let bBallYOverst = 150;
+    let bBallYNederst = 900;
+    let ballradius = 20;
+    let ballHastighet = 6;
+    let vX = 0;
+    let vY = 0;
+    let ballRetning = 180;
+    let poeng = 0;
+
+    //Spill-logikk
+    let start = true;
+    let lastTime = 0;
+    const fps = 60;
+    const frameInterval = 1000 / fps;
+    let count = 1;
+    let startTimer = 0;
+    let stopFadeIn = false;
+
+    //funksjon for å ta inn musepekeren inn i paddleX og paddleY-variabelen
+    window.addEventListener('mousemove', (event) => {
+        paddleX = event.clientX;
+        paddleY = event.clientY;
+    });
+
+    //Dette er koden som skaffer update() ca 60 frames per sekund. kan justeres
+    function gameLoop(currentTime) {
+        if (!lastTime) lastTime = currentTime;
+        const elapsed = currentTime - lastTime;
+
+        if (elapsed >= frameInterval) {
+            lastTime = currentTime - (elapsed % frameInterval);
+            update();
+        }
+        requestAnimationFrame(gameLoop);
+    }
+    //Viktig her kjører paddle-gameloopen
+    function update() {
+        if(paddleX > bXVenstre && paddleX < bXHoyre){
+            paddleKontroll(paddleX, staticPositionY, paddleBredde, paddleHoyde);
+        }
+        ballStart();
+        ballBevegelse();
+
+        if(performance.now() >= startTimer+2000 && stopFadeIn === false){
+            let classes = ".historie" + count;
+            let element = document.querySelector(classes);
+            element.style.opacity = '1';
+            element.style.visibility = 'visible';
+            if(performance.now() >= startTimer+10000){
+                element = document.querySelector(classes);
+                element.style.opacity = '0';
+                count++;
+                startTimer = performance.now();
+            }
+            if(count === 6){
+                let elements = document.querySelector('.poeng');
+                elements.style.opacity = '1';
+                elements.style.visibility = 'visible';
+                poeng = 0;
+                elements.textContent = poeng;
+                stopFadeIn = true;
+            }
+        }
+    }
+
+    //Trenger tilfeldigheter. denne koden skaffer meg det.
+    function tilfeldigHeltall(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    //sørger for at ballen starter sånn noenlunde greit på midten
+    function ballStart(){
+        if(start === true) {
+            ballX = tilfeldigHeltall(500, 600);
+            ballY = tilfeldigHeltall(500, 600);
+            ballRetning = tilfeldigHeltall(1,360);
+            start = false;
+        }
+    }
+    // beregning av retning til bruk i ballBevegelse()
+    function retningX(){
+        vX = ballHastighet * Math.cos(graderTilRadianer(ballRetning));
+        return vX
+    }
+
+    // beregning av retning til bruk i ballBevegelse()
+    function retningY(){
+        vY = ballHastighet * Math.sin(graderTilRadianer(ballRetning));
+        return vY;
+    }
+    //Kode som kjøres hele tiden via update(). Sørger for at ballen forflytter seg på skjerm
+    function ballBevegelse(){
+        if(start === false){
+            if (ballX <= bBallXVenstre || ballX >= bBallXHoyre) {
+                ballRetning = 180 - ballRetning + tilfeldigHeltall(-20, 20);
+            }
+            ballX = ballX + retningX();
+
+            if (ballY < bBallYOverst) {
+                 ballRetning = 360 - ballRetning + tilfeldigHeltall(-20, 20);
+            }
+            if (ballX + ballradius > paddleX && ballX - ballradius < paddleX + paddleBredde &&
+                ballY + ballradius > staticPositionY && ballY - ballradius < staticPositionY + paddleHoyde) {
+                ballRetning = 360 - ballRetning;
+                poeng += 50;
+                let elements = document.querySelector('.poeng');
+                elements.textContent = poeng;
+            }
+
+            ballY = ballY + retningY();
+            if(ballY > bBallYNederst){
+                start = true;
+                poeng = 0;
+                let elements = document.querySelector('.poeng');
+                elements.textContent = poeng;
+            }
+            ballen(ballX,ballY, ballradius);
+        }
+    }
+
+    //For å få til retning på ball
+    function graderTilRadianer(grader){
+        return grader * (Math.PI / 180);
+    }
+
+   //Startkode som kjøres når man trykker på knapp med id = start.
+    document.getElementById("start").addEventListener("click", function() {
+        requestAnimationFrame(gameLoop);
+        darken();
+        startTimer = performance.now();
+    });
+
+    //Lager et nytt grafisk element(div, se variabelliste øverst) som gjøres om til en ball ved hjelp av borderradius.
+    function ballen(x, y, r){
+        ball.style.position = 'absolute';
+        ball.style.left = x + 'px';
+        ball.style.top = y + 'px';
+        ball.style.width = 2 + r + 'px';
+        ball.style.height = 2 + r + 'px';
+        ball.style.backgroundColor = '#C55A44';
+        ball.style.borderRadius = '25px';
+        document.body.appendChild(ball);
+    }
+    //Lager et nytt grafisk element(div2, se variabelliste øverst) som gjøres om til en paddel.
+    function paddleKontroll(x,y,l, h){
+        boks.style.position = 'absolute';
+        boks.style.left = x + 'px';
+        boks.style.top = y + 'px';
+        boks.style.width = l + 'px';
+        boks.style.height = h + 'px';
+        boks.style.backgroundColor = '#C55A44';
+        boks.style.borderRadius = '10px';
+        document.body.appendChild(boks);
+    }
+    //Kode for å gjøre menyen mørk.
+    function darken(){
+        let elements = document.querySelectorAll('.Hovedmeny-Banner');
+        elements.forEach(element => {
+            const animation = element.animate([
+                { opacity: 1 },
+                { opacity: 0 }
+            ], {
+                duration: 500, // Tid i millisekunder (0.5 sekunder)
+                easing: 'ease-in-out'
+            });
+
+            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
+            animation.onfinish = () => {
+                element.style.backgroundColor = 'black';
+            };
+        });
+
+        elements = document.querySelectorAll('.Side-bannerLeft');
+        elements.forEach(element => {
+            const animation = element.animate([
+                { opacity: 1 },
+                { opacity: 0 }
+            ], {
+                duration: 500, // Tid i millisekunder (0.5 sekunder)
+                easing: 'ease-out'
+            });
+
+            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
+            animation.onfinish = () => {
+                element.style.backgroundColor = 'black';
+            };
+        });
+
+        elements = document.querySelectorAll('.Side-bannerRight');
+        elements.forEach(element => {
+            const animation = element.animate([
+                { opacity: 1 },
+                { opacity: 0 }
+            ], {
+                duration: 500, // Tid i millisekunder (0.5 sekunder)
+                easing: 'ease-out'
+            });
+
+            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
+            animation.onfinish = () => {
+                element.style.backgroundColor = 'black';
+            };
+        });
+
+        elements = document.querySelectorAll('.Nedre_banner');
+        elements.forEach(element => {
+            const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
+            animation.onfinish = () => { element.style.backgroundColor = 'black';
+            };
+        });
+
+        elements = document.querySelectorAll('a');
+        elements.forEach(element => {
+            const animation = element.animate([
+                { opacity: 1 },
+                { opacity: 0 }
+            ], {
+                duration: 500, // Tid i millisekunder (0.5 sekunder)
+                easing: 'ease-out'
+            });
+
+            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
+            animation.onfinish = () => {
+                element.style.display = 'none';
+            };
+        });
+        elements = document.querySelectorAll('.Overskrift');
+        elements.forEach(element => {
+            const animation = element.animate([
+                { opacity: 1 },
+                { opacity: 0 }
+            ], {
+                duration: 500, // Tid i millisekunder (0.5 sekunder)
+                easing: 'ease-out'
+            });
+
+            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
+            animation.onfinish = () => {
+                element.style.display = 'none';
+            };
+        });
+
+        elements = document.querySelectorAll('img');
+        elements.forEach(element => {
+            const animation = element.animate([
+                { opacity: 1 },
+                { opacity: 0 }
+            ], {
+                duration: 500, // Tid i millisekunder (0.5 sekunder)
+                easing: 'ease-out'
+            });
+
+            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
+            animation.onfinish = () => {
+                element.style.display = 'none';
+            };
+        });
+
+        elements = document.querySelectorAll('.Nedre_BannerSkrift');
+        elements.forEach(element => {
+            const animation = element.animate([
+                { opacity: 1 },
+                { opacity: 0 }
+            ], {
+                duration: 500, // Tid i millisekunder (0.5 sekunder)
+                easing: 'ease-in-out'
+            });
+
+            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
+            animation.onfinish = () => {
+                element.style.display = 'none';
+            };
+        });
+
+        elements = document.querySelector('.poeng');
+        elements.style.opacity = '0';
+
+        elements = document.querySelectorAll('h2');
+        elements.forEach(element => {
+            const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
+            animation.onfinish = () => {element.style.display = 'none';};
+        });
+
+    }
+        </script>
+    </body>
 </html>

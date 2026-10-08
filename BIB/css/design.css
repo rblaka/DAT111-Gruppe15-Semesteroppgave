@@ -183,7 +183,7 @@ a{
     padding: 0 300px ;
 }
 
-/*Informasjon om teksthåntering*/
+/*Teksthåndtering*/
 .Grid div{
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
@@ -450,4 +450,46 @@ h5{
 
 .Elif-tilbake:hover {
     color: #C55A44;
+}
+
+
+/*Rune Historie*/
+.historie1{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out;
+}
+.historie2{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out;
+}
+.historie3{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out;
+}
+.historie4{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out;
+}
+.historie5{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out;
+}
+.poeng{
+    font-size: 70px;
+    visibility: hidden;
+    top: 50%;
+    left: 50%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+
 }
