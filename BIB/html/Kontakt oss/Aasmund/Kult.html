@@ -61,23 +61,37 @@
 <body>
 <h1>A wild Åsmund appeared</h1>
 <img class="platform" src="../../../Bilder/Aasmund/Basic_Grass.webp" width="750" height="250">
-<img class="enemy" src="../../../Bilder/Aasmund/AnimertATcrop.gif" width="222" height="600">
+<img class="enemy" id="enemyGif" src="../../../Bilder/Aasmund/AnimertATcrop.gif" width="222" height="600">
 <img class="platform2" src="../../../Bilder/Aasmund/Basic_Grassback.webp" width="1024" height="128">
 <img class="char" src="../../../Bilder/Aasmund/char-slow.gif" width="1000" height="1000">
 
 <table class="hp">
     <tr>
         <td>
-            <h2>20/20 HP</h2>
+            <h2 id="liv"></h2>
         </td>
     </tr>
+<script>
+    let x = 20;
+    document.getElementById("liv").innerHTML = x;
+    function Tackle(){
+    x-=3;
+    document.getElementById("liv").innerHTML = x;
+    }
+    function Ember(){
+        alert("test");
+        x-=5;
+        document.getElementById("liv").innerHTML = x;
+    }
+
+</script>
 
 </table>
 
 <table class="UI">
     <tr>
-        <td> <a class="atk" href="Zigzag15.html">TACKLE</a> </td>
-        <td> <a class="atk" href="Zigzag15.html">EMBER</a> </td>
+        <td> <a class="atk" href="javascript:Tackle()">TACKLE</a> </td>
+        <td> <a class="atk" href="javascript:Ember()">EMBER</a> </td>
     </tr>
     <tr>
         <td> <a class="atk" href="Zigzag15.html">SAND-ATTACK</a> </td>
