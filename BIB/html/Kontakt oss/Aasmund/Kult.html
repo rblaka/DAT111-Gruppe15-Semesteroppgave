@@ -10,24 +10,18 @@
     <style>
 
         .hp { position: absolute;
-            right: 800px;
-            top: 50px;
+            left: 155px;
+            top: 230px;
             font-family: "Tiny5", sans-serif;
-            font-size: 100px;
-        }
-        .nmy { position: absolute;
-            right: 800px;
-            top: 0px;
-            font-family: "Tiny5", sans-serif;
-            font-size: 80px;}
+            font-size: 35px;
 
+        }
         .UI {border: 6px solid black;
             font-size: 75px;
             border-radius: 10px;
             position: absolute;
             left: 230px;
             bottom: 120px;
-            font-family: "Tiny5", sans-serif;
             background-color: azure;}
 
         td {border: 3px solid gray;
@@ -35,8 +29,8 @@
             border-radius: 2px;}
 
         .enemy {position: absolute;
-            right: 360px;
-            top: 8px;}
+            right: 440px;
+            top: 48px;}
 
         .atk {color: black;
             font-family: "Tiny5", sans-serif;
@@ -56,167 +50,55 @@
             bottom: -90px;}
 
         body {
+            background-image: url("ackground1.jpg");
             background-repeat: no-repeat;
             background-size: 100% 100%;}
 
 
 
     </style>
-    <title>Boss Battle</title>
 </head>
 <body>
-<img class="platform" src="../../../Bilder/Aasmund/Basic_Grass.webp" width="750" height="250">
-<img class="enemy" id="enemyGif" src="../../../Bilder/Aasmund/AnimertAT.gif" width="396" height="704">
-<img class="platform2" src="../../../Bilder/Aasmund/Basic_Grassback.webp" width="1024" height="128">
-<img class="char" id="player" src="../../../Bilder/Aasmund/char-slow.gif" width="1000" height="1000">
+<h1>A wild Åsmund appeared</h1>
+<img class="platform" src="../../../Bilder/Aasmund/Basic_Grass.webp" alt="Bakgrund av gress" width="750" height="250">
+<img class="enemy" id="enemyGif" src="../../../Bilder/Aasmund/AnimertATcrop.gif" alt="En gif av en pikslete mann" width="222" height="600">
+<img class="platform2" src="../../../Bilder/Aasmund/Basic_Grassback.webp" alt="Bakgrund av gress" width="1024" height="128">
+<img class="char" src="../../../Bilder/Aasmund/char-slow.gif" alt="Gif av en pokemon" width="1000" height="1000">
 
-<h2 class="hp" id="liv"></h2>
-<h2 class="nmy">ÅSMUND</h2>
-<table class="UI">
+<table class="hp">
     <tr>
-        <td> <a id="Text">test</a> </td>
+        <td>
+            <h2 id="liv"></h2>
+        </td>
     </tr>
-</table>
-
-<table class="UI" id="Menu">
-    <tr>
-        <td > <a class="atk" id="Tackle" href="javascript:Tackle()">TACKLE</a> </td>
-        <td > <a class="atk" id="Ember" href="javascript:Ember()">EMBER</a> </td>
-    </tr>
-    <tr>
-        <td > <a class="atk" id="Sand" href="javascript:Sandatk()">SAND-ATTACK</a> </td>
-        <td > <a class="atk" id="Flee" href="../../../index.html">FLEE</a> </td>
-    </tr>
-</table>
-
-
 <script>
-    //Dette kunne sikkert gjøres mye enklere, men er første gang jeg skriver javascript
     let x = 20;
-    let y = document.getElementById("Menu");
-    let z = 1;
-
-    document.getElementById("liv").innerHTML = `${x}hp`;
-
-    function visMeny(){
-        y.style.display = "block";
-        //bytter animasjonen tilbake til idle
-        document.getElementById('enemyGif').src='/BIB/Bilder/Aasmund/AnimertAt.gif'
-        nyTur();
-    }
-    <!--ny tur-->
-    function nyTur(){
-        z++;
-        document.getElementById("tur").innerHTML = z;
-    }
-
-
+    document.getElementById("liv").innerHTML = x;
     function Tackle(){
-
-        //gjemmer menyen. inspirert fra w3schools.com/howto/howto_js_toggle_hide_show.asp
-        y.style.display = "none";
-
-        //utfører skaden
-        x-=3;
-        document.getElementById("liv").innerHTML = `${x}hp`;
-
-        //fiende bytter til angripsanimasjon
-        document.getElementById('enemyGif').src='/BIB/Bilder/Aasmund/Atk.gif'
-
-        //midlertidig delay w3schools.com/js/tryit.asp?filename=tryjs_timers_timeout
-        //Viser menyen igjen
-        setTimeout(visMeny, 4000);
-
-        //Åsmunds tur
-        aasmundsTur();
-
-
-        //y.style.display = "block";
+    x-=3;
+    document.getElementById("liv").innerHTML = x;
     }
     function Ember(){
-        //gjemmer menyen. inspirert fra w3schools.com/howto/howto_js_toggle_hide_show.asp
-        y.style.display = "none";
-
-        //utfører skaden
+        alert("test");
         x-=5;
-        document.getElementById("liv").innerHTML = `${x}hp`;
-
-        //fiende bytter til angripsanimasjon
-        document.getElementById('enemyGif').src='/BIB/Bilder/Aasmund/Atk.gif'
-
-        //midlertidig delay w3schools.com/js/tryit.asp?filename=tryjs_timers_timeout
-        //Viser menyen igjen
-        setTimeout(visMeny, 4000);
-
-        //Åsmunds tur
-        aasmundsTur();
-        document.getElementById("liv").innerHTML = `${x}hp`;
-    }
-    function Sandatk(){
-        //sannheten
-        alert("Bare tapere bruker Sand-Attack!");
-        alert("Du burde skamme deg");
+        document.getElementById("liv").innerHTML = x;
     }
 
-    //Her lager jeg en sekvens av angrip som kommer tilbake
-    function aasmundsTur() {
-        if (z == 1) {
-            document.getElementById("Text").innerHTML = "Åsmund used HTML-Attack! You are now a PNG";
-            setTimeout(angrip1, 2500);
-            setTimeout(hideText, 4000);
-        } else if (z == 2) {
-            document.getElementById("Text").innerHTML = "Åsmund used CSS-Attack!";
-            setTimeout(angrip2, 2500);
-            setTimeout(hideText, 4000);
-        } else if (z == 3) {
-            document.getElementById("Text").innerHTML = "Åsmund used JS-Attack!";
-            setTimeout(angrip3, 2500);
-            setTimeout(hideText, 4000);
-        }
-
-        //ANGRIPS funksjoner:
-        function angrip1() {
-            document.getElementById("player").src = '/BIB/Bilder/Aasmund/charstopp.png'
-        }
-
-        function angrip2() {
-            document.getElementById("Tackle").style.fontFamily = "Impact, fantasy";
-            document.getElementById("Ember").style.fontFamily = "Luminari, fantasy";
-            document.getElementById("Sand").style.fontFamily = "Courier New, monospace";
-            document.getElementById("Flee").style.fontSize = "200px"
-            document.getElementById("Menu").style.background = "Navy";
-            document.getElementById("player").height = "110";
-            document.getElementById("player").style.bottom = "500px";
-            document.getElementById("player").style.left = "300px";
-            document.body.style.backgroundColor = "gray";
-        }
-
-        function angrip3() {
-            document.getElementById("player").style.bottom = "250px";
-            document.getElementById("Menu").style.bottom = "500px";
-            document.getElementById("Menu").style.background = "Red";
-            document.body.style.backgroundColor = "yellow";
-            document.getElementById("enemyGif").height = "1150";
-            document.getElementById("enemyGif").width = "800";
-            document.getElementById("Tackle").href = "../../../index.html";
-            document.getElementById("Ember").href = "../../../index.html";
-            document.getElementById("Sand").href = "../../../index.html";
-            document.getElementById("Tackle").innerHTML="FLEE";
-            document.getElementById("Ember").innerHTML="FLEE";
-            document.getElementById("Sand").innerHTML="FLEE";
-        }
-
-        function gulBakgrunn(){
-            document.body.style.backgroundColor = "yellow";
-        }
-        function blaBakgrunn(){
-            document.body.style.backgroundColor = "blue";
-        }
-
-        function hideText() {
-            document.getElementById("Text").innerHTML = "";
-        }
-    }
 </script>
+
+</table>
+
+<table class="UI">
+    <tr>
+        <td> <a class="atk" href="javascript:Tackle()">TACKLE</a> </td>
+        <td> <a class="atk" href="javascript:Ember()">EMBER</a> </td>
+    </tr>
+    <tr>
+        <td> <a class="atk" href="Zigzag15.html">SAND-ATTACK</a> </td>
+        <td> <a class="atk" href="Zigzag15.html">TAIL-WHIP</a> </td>
+    </tr>
+
+</table>
+
 
 </body>
