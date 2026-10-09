@@ -20,7 +20,7 @@ a{
 
 
 /*Her lages menyKlassen som skaper en boks med enkel farge, som følger siden nedover forankret i topp*/
-.Hovedmeny-Banner {
+.Nav-Banner {
     position: sticky;
     top: 0;
     left: 0;
@@ -42,15 +42,15 @@ a{
 
 /*OverskriftKlassen brukes inni hovedmeny-banner*/
 .Overskrift{
-    font-size: 50px;
+    font-size: 57px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
     position: absolute;
     color: #16243D; /* Endre farge på overskriften her*/
-    top: 0;
-    left: 15.2%;
+    top: 27px;
+    margin-left: 250px;
 }
 
 /**************Her starter magien med Dropdownlister*************/
@@ -116,6 +116,11 @@ a{
     opacity: 1;
     display: block;
     animation: fadeIn 0.2s ease-in ;
+}
+.Dropdown:hover .Dropdown-list,
+.Dropdown:focus-within .Dropdown-list {
+    opacity: 1;
+    display: block;
 }
 
 /*Funksjonen til dropdownlisten, som sier at dropdownteksten skal vises og fades in når musen peker på menyvalget*/
@@ -185,9 +190,7 @@ a{
 
 /*Teksthåndtering*/
 .Grid div{
-    font-size: 14px;
     font-family: 'Montserrat', sans-serif;
-    font-weight: 100;
     letter-spacing: 1px;
     text-align: left;
 
@@ -195,9 +198,8 @@ a{
 
 /*Overskrift for grid*/
 .Grid h1{
-    font-size: 24px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
+    font-size:larger;
+    font-weight: bolder;
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: left;
@@ -207,6 +209,8 @@ a{
 .Grid p{
     color: #2B2B2B;
     animation: fadeIn 0.4s ease-in;
+    font-size: small;
+    font-weight:lighter;
 }
 .Grid img{
     animation: fadeIn 0.3s ease-in;
@@ -263,7 +267,7 @@ a{
 }
 
 /*Nedre bannerklassen. Her legges kontaktinfo osv. Er en fargeboks som legges nederst*/
-.Nedre_banner {
+.Footer-Banner {
     position: relative;
     bottom: 0;
     background-color: #16243D; /*Endre farge på nedre banner her*/
@@ -273,7 +277,7 @@ a{
 }
 
 /* Skriftklassen som sier hvor kontaktinfo skal stå. Legges inni nedre banner*/
-.Nedre_BannerSkrift{
+.Footer-BannerSkrift{
     font-size: 10px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
@@ -451,6 +455,7 @@ h5{
 .Elif-tilbake:hover {
     color: #C55A44;
 }
+
 
 /*Rune Historie*/
 .runeHistorie1{
