@@ -39,8 +39,37 @@
 
 <!--Start hovedinnhold-->
 <div class="Grid">
-    <div><h2>La meg fortelle deg en liten historie...<a class="cursorMain" href="#" id="start" style="font-weight: 1000;">Trykk her</a></h2>
-        <h2>Alternativt kan du gå tilbake til<a class="cursorMain" href="../../../html/Kontakt oss/Rune/Kontakt1.html" style="font-weight: 1000;"> Kontakt</a></h2>
+    <div>
+        <h2>La meg fortelle deg en liten historie...<a class="cursorMain" href="#" id="start" style="font-weight: 1000;">Trykk her</a></h2>
+       <p class="runeSkrift">
+            Det jeg erfarte med dette prosjektet er hvor mye glede det er å bygge noe. <br>
+            Jeg må og innrømme at det har vært en fornøylse å lage CSS-layout hvor man begrenser seg <br>
+            til kun CSS og HTML. Da skapes kreative løsninger med verktøyet man har blitt utdelt...<br><br>
+            Det er også slik at det er morsomt å utfordre seg, og siden jeg kunne lite om javascript,<br>
+            så ville jeg utfordre meg selv. Det starter med hvordan får jeg til den forbaskede koden til<br>
+            fungere med en knapp!<br><br>
+            Det gikk en del tid til å få til "Hello world"-knappen, og forstå sammenhengen med knapp og kode. <br>
+            Når eureka-momentet mitt kom ble jeg litt lettere til sins. Det varte helt til jeg<br>
+            måtte bruke dokument-funksjoner. Dette var noe nytt å sette seg inn i, men gikk etterhvert<br>
+            opp et lys om at dette er portalen inn til html og css-elementene. Etter det ble det<br>
+            mer og mer spagettikode-generering, da lite tid og nytt-språk skaper slikt<br>
+            Jeg satt med en følelse av at jeg har tatt meg vann over hode... <br>
+            Så løsnet det.<br>
+            Eureka! Koden fungerer!<br>
+            Dette har gitt meg den samme følelsen som da jeg har laget min første fuglekasse på skolen.<br>
+            Uerfaren og stolt!<br>
+            Det er absolutt ikke perfekt, og skalerer ikke på ulike zoom-leveler i nettleser,<br>
+            men det føles som en fin inngangsverdi inn i javascript-verden.<br>
+            Uansett så har det minnet meg på hvor gøy det er å programmere.<br>
+            Javascript er noe jeg aldri har helt forstått hvordan det henger<br>
+            sammen med html og css. Det var som en svart boks. Så det å begynne<br>
+            på denne delen var gøy og nervepirrende. <br>
+            Beklager på forhånd min uoptimaliserte kode<br>
+       </p>
+
+
+
+        <h2>Her kan du gå tilbake til<a class="cursorMain" href="../../../html/Kontakt oss/Rune/Kontakt1.html" style="font-weight: 1000;"> Kontakt</a></h2>
         <p class="runeHistorie1">
             Jeg har alltid likt retro spill...<br>
             Det minner meg om en enklere tid...<br>
@@ -350,6 +379,11 @@
 
         //Skjul header-element 2
         elements = document.querySelectorAll('h2');
+        elements.forEach(element => {
+            const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
+            animation.onfinish = () => {element.style.display = 'none';};
+        });
+        elements = document.querySelectorAll('.runeSkrift');
         elements.forEach(element => {
             const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
             animation.onfinish = () => {element.style.display = 'none';};

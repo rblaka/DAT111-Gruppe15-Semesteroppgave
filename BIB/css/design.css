@@ -509,6 +509,10 @@ h5{
     transition: opacity 0.8s ease-in-out;
 }
 
+.runeSkrift{
+
+}
+
 .runeImg{
     align-content: center;
     position: absolute;
