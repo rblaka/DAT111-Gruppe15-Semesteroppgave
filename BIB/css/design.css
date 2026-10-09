@@ -454,32 +454,32 @@ h5{
 
 
 /*Rune Historie*/
-.historie1{
+.runeHistorie1{
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.8s ease-in-out;
 }
-.historie2{
+.runeHistorie2{
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.8s ease-in-out;
 }
-.historie3{
+.runeHistorie3{
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.8s ease-in-out;
 }
-.historie4{
+.runeHistorie4{
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.8s ease-in-out;
 }
-.historie5{
+.runeHistorie5{
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.8s ease-in-out;
 }
-.poeng{
+.runePoeng{
     font-size: 70px;
     visibility: hidden;
     top: 50%;
@@ -491,5 +491,31 @@ h5{
     position: absolute;
     opacity: 0;
     transition: opacity 0.8s ease-in-out;
+}
+.runeExit{
+    position: absolute;
+    top: 0;
+    left: 50%;
+    color: white;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 50px;
+    transition: opacity 0.8s ease-in-out;
+}
+.runeBilde1{
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease-in-out;
+}
 
+.runeImg{
+    align-content: center;
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    width: 40%;
+    height: 40%;
+    object-fit: fill;
 }

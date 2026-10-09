@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="No">
 <head>
-
     <link rel=stylesheet href="../../../css/design.css">
     <!--Henter inn æ, ø og å....-->
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
@@ -40,49 +39,57 @@
 
 <!--Start hovedinnhold-->
 <div class="Grid">
-    <div><h2>La meg fortelle deg en liten historie...<a class="cursorMain" href="#" id="start">Trykk her</a></h2>
-        <p class="historie1">
+    <div><h2>La meg fortelle deg en liten historie...<a class="cursorMain" href="#" id="start" style="font-weight: 1000;">Trykk her</a></h2>
+        <h2>Alternativt kan du gå tilbake til<a class="cursorMain" href="../../../html/Kontakt oss/Rune/Kontakt1.html" style="font-weight: 1000;"> Kontakt</a></h2>
+        <p class="runeHistorie1">
             Jeg har alltid likt retro spill...<br>
             Det minner meg om en enklere tid...<br>
             Da alt var litt mer spennende...
         </p>
-        <p class="historie2">
+        <div class="runeBilde1"><img class="runeImg" src="../../../Bilder/KI-Datamaskin.jpg" alt="Datamaskin"/></div>
+        <p class="runeHistorie2">
             Første gangen vi fikk en datamaskin i hjemmet var i 1996.<br>
             Det var som en magisk boks som duret.<br>
             bokstaver og farger på en skjerm, alt satt i system...<br>
 
         </p>
-        <p class="historie3">
-            Siden har jeg aldri gitt opp fasinasjonen for datamaskiner<br>
+        <p class="runeHistorie3">
+            Og siden har jeg aldri fått mettet min nysgjerrighet for datamaskiner<br>
             Det å måtte glede seg over de små tingene er viktig.<br>
             Glede av å få til nye ting...
         </p>
-        <p class="historie4">
+        <p class="runeHistorie4">
             Det trenger ikke være perfekt...
         </p>
-        <p class="historie5">
+        <p class="runeHistorie5">
             Det må bare være motiverende og gøy...<br>
 
         </p>
 
-        <ul>
-            <li><p class="poeng">0</p></li>
-        </ul>
+
+        <p class="runePoeng">0</p>
+
+
     </div>
     <div>
         <img class="alignImage" src="../../../Bilder/IMG_0289.jpeg" alt="Rune Blåka">
     </div>
+    <div></div>
+    <div></div>
 
 
 </div>
+
 <!--Slutt hovedinnhold-->
 
 <!--Nedre banner-->
+
+
 <div class="Space"><br></div>
 <div class="Space"></div>
 <div class="Space"></div>
-<div class="Space"></div>
 <div class="Nedre_banner">
+    <p><a class="runeExit cursor" href="../../../html/Kontakt oss/Rune/historie.html">TILBAKE</a></p>
     <div class="Nedre_BannerSkrift">
         <p>Kontakt oss:</p>
         <p>Nikolaikirkeallmenningen 1B, 5003 Bergen</p>
@@ -98,7 +105,6 @@
     let paddleX = 0;
     let paddleY = 0;
     let staticPositionY = 800;
-
     let bXVenstre = 240;
     let bXHoyre = 1570;
     let paddleBredde = 100;
@@ -117,7 +123,6 @@
     let vX = 0;
     let vY = 0;
     let ballRetning = 180;
-    let poeng = 0;
 
     //Spill-logikk
     let start = true;
@@ -127,6 +132,7 @@
     let count = 1;
     let startTimer = 0;
     let stopFadeIn = false;
+    let poeng = 0;
 
     //funksjon for å ta inn musepekeren inn i paddleX og paddleY-variabelen
     window.addEventListener('mousemove', (event) => {
@@ -145,7 +151,8 @@
         }
         requestAnimationFrame(gameLoop);
     }
-    //Viktig her kjører paddle-gameloopen
+
+    //Viktig her kjører paddle-gameloopen som oppdaterer ballbevegelse, og paddle, samt timere for å vise tekst og bilde
     function update() {
         if(paddleX > bXVenstre && paddleX < bXHoyre){
             paddleKontroll(paddleX, staticPositionY, paddleBredde, paddleHoyde);
@@ -154,22 +161,29 @@
         ballBevegelse();
 
         if(performance.now() >= startTimer+2000 && stopFadeIn === false){
-            let classes = ".historie" + count;
+            let classes = ".runeHistorie" + count;
             let element = document.querySelector(classes);
             element.style.opacity = '1';
             element.style.visibility = 'visible';
-            if(performance.now() >= startTimer+10000){
+            if(performance.now() >= startTimer+7000){
                 element = document.querySelector(classes);
                 element.style.opacity = '0';
                 count++;
                 startTimer = performance.now();
             }
             if(count === 6){
-                let elements = document.querySelector('.poeng');
-                elements.style.opacity = '1';
-                elements.style.visibility = 'visible';
                 poeng = 0;
-                elements.textContent = poeng;
+                let element1 = document.querySelector('.runePoeng');
+                element1.style.opacity = '1';
+                element1.style.visibility = 'visible';
+                element1.textContent = poeng;
+                let element2 = document.querySelector('.runeBilde1');
+                element2.style.opacity = '0.3';
+                element2.style.visibility = 'visible';
+                let element3 = document.querySelector('.runeExit');
+                element3.style.color = 'white';
+                element3.style.opacity = '1';
+                element3.style.visibility = 'visible';
                 stopFadeIn = true;
             }
         }
@@ -215,7 +229,7 @@
                 ballY + ballradius > staticPositionY && ballY - ballradius < staticPositionY + paddleHoyde) {
                 ballRetning = 360 - ballRetning;
                 poeng += 50;
-                let elements = document.querySelector('.poeng');
+                let elements = document.querySelector('.runePoeng');
                 elements.textContent = poeng;
             }
 
@@ -223,7 +237,7 @@
             if(ballY > bBallYNederst){
                 start = true;
                 poeng = 0;
-                let elements = document.querySelector('.poeng');
+                let elements = document.querySelector('.runePoeng');
                 elements.textContent = poeng;
             }
             ballen(ballX,ballY, ballradius);
@@ -264,135 +278,82 @@
         boks.style.borderRadius = '10px';
         document.body.appendChild(boks);
     }
+
     //Kode for å gjøre menyen mørk.
     function darken(){
+        //fargelegg hoved-banner sort
         let elements = document.querySelectorAll('.Hovedmeny-Banner');
         elements.forEach(element => {
-            const animation = element.animate([
-                { opacity: 1 },
-                { opacity: 0 }
-            ], {
-                duration: 500, // Tid i millisekunder (0.5 sekunder)
-                easing: 'ease-in-out'
-            });
-
-            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
-            animation.onfinish = () => {
-                element.style.backgroundColor = 'black';
-            };
+            const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-in-out'});
+            animation.onfinish = () => {element.style.backgroundColor = 'black';};
         });
 
+        //fargelegg venstre banner sort
         elements = document.querySelectorAll('.Side-bannerLeft');
         elements.forEach(element => {
-            const animation = element.animate([
-                { opacity: 1 },
-                { opacity: 0 }
-            ], {
-                duration: 500, // Tid i millisekunder (0.5 sekunder)
-                easing: 'ease-out'
-            });
-
-            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
-            animation.onfinish = () => {
-                element.style.backgroundColor = 'black';
-            };
+            const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
+            animation.onfinish = () => {element.style.backgroundColor = 'black';};
         });
 
+        //fargelegg høyre banner sort
         elements = document.querySelectorAll('.Side-bannerRight');
         elements.forEach(element => {
-            const animation = element.animate([
-                { opacity: 1 },
-                { opacity: 0 }
-            ], {
-                duration: 500, // Tid i millisekunder (0.5 sekunder)
-                easing: 'ease-out'
-            });
-
-            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
-            animation.onfinish = () => {
-                element.style.backgroundColor = 'black';
-            };
+            const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
+            animation.onfinish = () => {element.style.backgroundColor = 'black';};
         });
 
+        //fargelegg nedre banner sort
         elements = document.querySelectorAll('.Nedre_banner');
         elements.forEach(element => {
             const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
-            animation.onfinish = () => { element.style.backgroundColor = 'black';
-            };
+            animation.onfinish = () => { element.style.backgroundColor = 'black';};
         });
 
+        //Skjul linker
         elements = document.querySelectorAll('a');
         elements.forEach(element => {
-            const animation = element.animate([
-                { opacity: 1 },
-                { opacity: 0 }
-            ], {
-                duration: 500, // Tid i millisekunder (0.5 sekunder)
-                easing: 'ease-out'
-            });
-
-            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
-            animation.onfinish = () => {
-                element.style.display = 'none';
-            };
+            const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
+            animation.onfinish = () => { element.style.color = 'black';};
         });
+
+        //Skjul overskrift
         elements = document.querySelectorAll('.Overskrift');
-        elements.forEach(element => {
-            const animation = element.animate([
-                { opacity: 1 },
-                { opacity: 0 }
-            ], {
-                duration: 500, // Tid i millisekunder (0.5 sekunder)
-                easing: 'ease-out'
-            });
-
-            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
-            animation.onfinish = () => {
-                element.style.display = 'none';
-            };
-        });
-
-        elements = document.querySelectorAll('img');
-        elements.forEach(element => {
-            const animation = element.animate([
-                { opacity: 1 },
-                { opacity: 0 }
-            ], {
-                duration: 500, // Tid i millisekunder (0.5 sekunder)
-                easing: 'ease-out'
-            });
-
-            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
-            animation.onfinish = () => {
-                element.style.display = 'none';
-            };
-        });
-
-        elements = document.querySelectorAll('.Nedre_BannerSkrift');
-        elements.forEach(element => {
-            const animation = element.animate([
-                { opacity: 1 },
-                { opacity: 0 }
-            ], {
-                duration: 500, // Tid i millisekunder (0.5 sekunder)
-                easing: 'ease-in-out'
-            });
-
-            // 2. Skjul elementet helt (`display = 'none'`) med en gang animasjonen er ferdig
-            animation.onfinish = () => {
-                element.style.display = 'none';
-            };
-        });
-
-        elements = document.querySelector('.poeng');
-        elements.style.opacity = '0';
-
-        elements = document.querySelectorAll('h2');
         elements.forEach(element => {
             const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
             animation.onfinish = () => {element.style.display = 'none';};
         });
 
+        //Skjul bilder med klasse image
+        elements = document.querySelectorAll('.image');
+        elements.forEach(element => {
+            const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
+            animation.onfinish = () => {element.style.display = 'none';};
+        });
+
+        //Skjul bilder med klasse alignImage
+        elements = document.querySelectorAll('.alignImage');
+        elements.forEach(element => {
+            const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
+            animation.onfinish = () => {element.style.display = 'none';};
+        });
+
+        //Skjul bannerskrift
+        elements = document.querySelectorAll('.Nedre_BannerSkrift');
+        elements.forEach(element => {
+            const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-in-out'});
+            animation.onfinish = () => {element.style.display = 'none';};
+        });
+
+        //Skjul poengskrift
+        let element1 = document.querySelector('.runePoeng');
+        element1.style.opacity = '0';
+
+        //Skjul header-element 2
+        elements = document.querySelectorAll('h2');
+        elements.forEach(element => {
+            const animation = element.animate([{ opacity: 1 }, { opacity: 0 }], {duration: 500, easing: 'ease-out'});
+            animation.onfinish = () => {element.style.display = 'none';};
+        });
     }
         </script>
     </body>
