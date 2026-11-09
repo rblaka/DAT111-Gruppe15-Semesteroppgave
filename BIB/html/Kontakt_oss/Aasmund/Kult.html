@@ -2,7 +2,7 @@
 <html lang="no">
 <head>
     <!--Henter inn æ, ø og å....-->
-    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,13 +65,13 @@
     <title>Boss Battle</title>
 </head>
 <body>
-<img class="platform" src="../../../Bilder/Aasmund/Basic_Grass.webp" width="750" height="250">
-<img class="enemy" id="enemyGif" src="../../../Bilder/Aasmund/AnimertAT.gif" width="396" height="704">
-<img class="platform2" src="../../../Bilder/Aasmund/Basic_Grassback.webp" width="1024" height="128">
-<img class="char" id="player" src="../../../Bilder/Aasmund/char-slow.gif" width="1000" height="1000">
+<img class="platform" src="../../../Bilder/Aasmund/Basic_Grass.webp" alt="Grass" width="750" height="250">
+<img class="enemy" id="enemyGif" src="../../../Bilder/Aasmund/AnimertAT.gif" alt="Animertatk" width="396" height="704">
+<img class="platform2" src="../../../Bilder/Aasmund/Basic_Grassback.webp" alt="Grassback" width="1024" height="128">
+<img class="char" id="player" src="../../../Bilder/Aasmund/char-slow.gif" alt="char_slow" width="1000" height="1000">
 
-<h2 class="hp" id="liv"></h2>
-<h2 class="nmy">ÅSMUND</h2>
+<h1 class="hp" id="liv"></h1>
+<h1 class="nmy">ÅSMUND</h1>
 <table class="UI">
     <tr>
         <td> <a id="Text">test</a> </td>
@@ -101,7 +101,7 @@
     function visMeny(){
         y.style.display = "block";
         //bytter animasjonen tilbake til idle
-        document.getElementById('enemyGif').src='/BIB/Bilder/Aasmund/AnimertAt.gif'
+        document.getElementById('enemyGif').src='../../../Bilder/Aasmund/AnimertAt.gif'
         nyTur();
     }
     //ny tur
@@ -121,7 +121,7 @@
         document.getElementById("liv").innerHTML = `${x}hp`;
 
         //fiende bytter til angripsanimasjon
-        document.getElementById('enemyGif').src='/BIB/Bilder/Aasmund/Atk.gif'
+        document.getElementById('enemyGif').src='../../../Bilder/Aasmund/Atk.gif'
 
         //midlertidig delay w3schools.com/js/tryit.asp?filename=tryjs_timers_timeout
         //Viser menyen igjen
@@ -139,7 +139,7 @@
         document.getElementById("liv").innerHTML = `${x}hp`;
 
         //fiende bytter til angripsanimasjon
-        document.getElementById('enemyGif').src='/BIB/Bilder/Aasmund/Atk.gif'
+        document.getElementById('enemyGif').src='../../../Bilder/Aasmund/Atk.gif'
 
         //midlertidig delay w3schools.com/js/tryit.asp?filename=tryjs_timers_timeout
         //Viser menyen igjen
@@ -204,7 +204,7 @@
 
         //ANGRIPS funksjoner:
         function angrip1() {
-            document.getElementById("player").src = '/BIB/Bilder/Aasmund/charstopp.png'
+            document.getElementById("player").src = '../../../Bilder/Aasmund/charstopp.png'
         }
 
         function angrip2() {

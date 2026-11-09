@@ -286,7 +286,7 @@ a{
 }
 
 /*Skrift som brukes for å si ifra at man har brukt ki-generert innhold*/
-h5{
+.KI_Innhold{
     font-size: 10px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 100;
